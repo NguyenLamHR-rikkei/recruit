@@ -82,7 +82,7 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; align-items: center; }
   .about-visual { position: relative; aspect-ratio: 3/4; max-height: 460px; }
   .about-portrait { width: 100%; height: 100%; background: linear-gradient(135deg, #f9edf0 0%, #ede0f0 100%); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; box-shadow: var(--shadow-md); }
-  .portrait-initials { font-family: var(--font-display); font-size: 9rem; font-weight: 300; color: rgba(201,113,122,0.18); line-height: 1; user-select: none; letter-spacing: -0.05em; }
+  .about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
   .about-portrait::after { content:''; position: absolute; inset:0; background: radial-gradient(ellipse at 35% 30%, rgba(201,113,122,0.1) 0%, transparent 60%); }
   .about-badge { position: absolute; bottom: -1rem; right: -1rem; background: var(--surface); border: 1px solid var(--glass-border); padding: 1.1rem 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-md); }
   .badge-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300; color: var(--rose); line-height: 1; }
@@ -258,7 +258,8 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-visual reveal">
-        <img src="Profile.img" alt="Nguyen Lam"></div>
+        <div class="about-portrait">
+          <img src="Profile.img" alt="Nguyen Lam"></div>
         <div class="about-badge"><div class="badge-num">6+</div><div class="badge-label">Years in IT Recruiting</div></div>
       </div>
       <div class="about-text">
