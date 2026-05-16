@@ -56,9 +56,9 @@
   #hero { position: relative; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; background: linear-gradient(160deg, #fdf8f2 0%, #f8eff2 40%, #f3edf8 100%); }
   #hero-canvas { position: absolute; inset:0; z-index:0; }
   .hero-blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.45; pointer-events: none; z-index: 0; }
-  .blob-1 { width: 70vw; height: 70vw; top:-25px; right:-15px; background: radial-gradient(circle, #f5c6cc, transparent 70%); }
-  .blob-2 { width: 60vw; height: 60vw; bottom:-20px; left:-15px; background: radial-gradient(circle, #d9c6e8, transparent 70%); }
-  .blob-3 { width: 45vw; height: 45vw; top:25%; left:25%; background: radial-gradient(circle, #fde0b0, transparent 70%); opacity:0.18; }
+  .blob-1 { width: 100%; height: 520px; top:-100px; right:0; left:0; background: radial-gradient(ellipse at 75% 50%, #f5c6cc, transparent 60%); }
+  .blob-2 { width: 100%; height: 400px; bottom:-80px; left:0; right:0; background: radial-gradient(ellipse at 25% 50%, #d9c6e8, transparent 60%); }
+  .blob-3 { width: 100%; height: 300px; top:30%; left:0; right:0; background: radial-gradient(ellipse at 50% 50%, #fde0b0, transparent 55%); opacity:0.2; }
   .hero-content { position: relative; z-index:2; padding: 0 2rem; }
   .hero-eyebrow { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.8rem; opacity:0; animation: fadeUp 1s ease 0.5s forwards; }
   .hero-title { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--ink); opacity:0; animation: fadeUp 1.1s ease 0.7s forwards; max-width: 880px; }
