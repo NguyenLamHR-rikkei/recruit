@@ -4,516 +4,339 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nguyên Lâm (Ramu) — IT Talent Partner | Japan</title>
-<meta name="description" content="IT Recruiter & Talent Partner specializing in Japanese and Vietnamese IT markets. 6+ years connecting top tech talent with leading Japanese companies.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:        #faf8f5;
-    --bg-warm:   #f5f1ec;
-    --bg-blush:  #f9f2f4;
-    --surface:   #ffffff;
-    --glass:     rgba(255,255,255,0.72);
-    --glass-border: rgba(190,160,150,0.18);
-    --ink:       #1b1b1b;
-    --ink-soft:  #3f3531;
-    --muted:     #74655e;
-    --muted-lt:  #ab978f;
-    --rose:      #c9717a;
-    --rose-lt:   rgba(201,113,122,0.12);
-    --rose-glow: rgba(201,113,122,0.22);
-    --mauve:     #a07898;
-    --mauve-lt:  rgba(160,120,152,0.1);
-    --gold:      #c4956a;
-    --gold-lt:   rgba(196,149,106,0.14);
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body:    'Jost', sans-serif;
-    --font-label:   'Syne', sans-serif;
-    --radius: 8px;
-    --shadow-sm: 0 2px 16px rgba(100,60,50,0.07);
-    --shadow-md: 0 8px 40px rgba(100,60,50,0.10);
-    --shadow-lg: 0 20px 60px rgba(100,60,50,0.13);
-  }
-  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; cursor: none; }
-
-  .cursor { position: fixed; width: 7px; height: 7px; background: var(--rose); border-radius: 50%; pointer-events: none; z-index: 9999; mix-blend-mode: multiply; }
-  .cursor-ring { position: fixed; width: 34px; height: 34px; border: 1.5px solid rgba(201,113,122,0.45); border-radius: 50%; pointer-events: none; z-index: 9998; transition: width 0.3s, height 0.3s, opacity 0.3s; }
-  .cursor-ring.expand { width: 58px; height: 58px; opacity: 0.5; }
-  body::before { content:''; position: fixed; inset:0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.018; pointer-events: none; z-index: 9997; }
-  .mouse-glow { position: fixed; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(201,113,122,0.06) 0%, transparent 70%); pointer-events: none; z-index: 1; transform: translate(-50%,-50%); }
-
-  nav { position: fixed; top:0; left:0; right:0; z-index:100; padding: 1.4rem 4rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.5s, backdrop-filter 0.5s, box-shadow 0.5s; }
-  nav.scrolled { background: rgba(250,248,245,0.88); backdrop-filter: blur(20px); box-shadow: 0 1px 0 var(--glass-border); }
-  .nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
-  .nav-logo span { color: var(--rose); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
-  .nav-links a:hover { color: var(--ink); }
-
-  #hero { position: relative; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; background: linear-gradient(160deg, #fdf8f2 0%, #f8eff2 40%, #f3edf8 100%); }
-  #hero-canvas { position: absolute; inset:0; z-index:0; }
-  .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; pointer-events: none; z-index: 0; }
-  .blob-1 { width: 520px; height: 520px; top:-100px; right:-80px; background: radial-gradient(circle, #f5c6cc, transparent 70%); }
-  .blob-2 { width: 400px; height: 400px; bottom:-80px; left:-60px; background: radial-gradient(circle, #d9c6e8, transparent 70%); }
-  .blob-3 { width: 300px; height: 300px; top:30%; left:20%; background: radial-gradient(circle, #fde0b0, transparent 70%); opacity:0.2; }
-  .hero-content { position: relative; z-index:2; padding: 0 2rem; }
-  .hero-eyebrow { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.8rem; opacity:0; animation: fadeUp 1s ease 0.5s forwards; }
-  .hero-title { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--ink); opacity:0; animation: fadeUp 1.1s ease 0.7s forwards; max-width: 880px; }
-  .hero-title em { font-style: italic; color: var(--rose); }
-  .hero-sub { margin-top: 1.6rem; font-size: 1rem; color: var(--muted); font-weight: 300; letter-spacing: 0.04em; opacity:0; animation: fadeUp 1.1s ease 1s forwards; }
-  .hero-cta { margin-top: 2.8rem; opacity:0; animation: fadeUp 1.1s ease 1.2s forwards; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.88rem 2.2rem; background: var(--rose); color: #fff; font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--rose); border-radius: 40px; transition: background 0.3s, box-shadow 0.3s, transform 0.2s; cursor: none; box-shadow: 0 4px 20px var(--rose-glow); }
-  .btn-primary:hover { background: #b85e67; box-shadow: 0 6px 30px var(--rose-glow); transform: translateY(-2px); }
-  .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.88rem 2.2rem; background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); border: 1.5px solid var(--glass-border); color: var(--ink-soft); font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border-radius: 40px; transition: border-color 0.3s, color 0.3s, transform 0.2s; cursor: none; }
-  .btn-ghost:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-2px); }
-  .scroll-indicator { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity:0; animation: fadeIn 1s ease 2s forwards; z-index:2; }
-  .scroll-indicator span { font-family: var(--font-label); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted-lt); }
-  .scroll-line { width: 1px; height: 46px; background: linear-gradient(to bottom, var(--rose), transparent); animation: scrollPulse 2s ease infinite; }
-
-  section { position: relative; }
-  .section-inner { max-width: 1200px; margin:0 auto; padding: 8rem 4rem; }
-  .section-label { font-family: var(--font-label); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.9rem; }
-  .section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.5rem; }
-  .section-title em { font-style: italic; color: var(--rose); }
-
-  #about { background: var(--bg-blush); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; align-items: center; }
-  .about-visual { position: relative; aspect-ratio: 3/4; max-height: 460px; }
-  .about-portrait { width: 100%; height: 100%; background: linear-gradient(135deg, #f9edf0 0%, #ede0f0 100%); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; box-shadow: var(--shadow-md); }
-  .portrait-initials { font-family: var(--font-display); font-size: 9rem; font-weight: 300; color: rgba(201,113,122,0.18); line-height: 1; user-select: none; letter-spacing: -0.05em; }
-  .about-portrait::after { content:''; position: absolute; inset:0; background: radial-gradient(ellipse at 35% 30%, rgba(201,113,122,0.1) 0%, transparent 60%); }
-  .about-badge { position: absolute; bottom: -1rem; right: -1rem; background: var(--surface); border: 1px solid var(--glass-border); padding: 1.1rem 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-md); }
-  .badge-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300; color: var(--rose); line-height: 1; }
-  .badge-label { font-family: var(--font-label); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
-  .about-intro { font-size: 1rem; line-height: 1.9; color: var(--ink-soft); margin-bottom: 1.5rem; }
-  .about-intro strong { color: var(--ink); font-weight: 500; }
-  .about-intro a { color: var(--rose); text-decoration: none; }
-  .about-intro a:hover { text-decoration: underline; }
-  .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-  .tag { padding: 0.38rem 1rem; background: var(--surface); border: 1px solid var(--glass-border); border-radius: 30px; font-family: var(--font-label); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: all 0.25s ease; box-shadow: var(--shadow-sm); }
-  .tag:hover { border-color: var(--rose); color: var(--rose); background: var(--rose-lt); }
-
-  #jobs { background: var(--bg); }
-  .jobs-filter { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
-  .filter-btn { padding: 0.42rem 1.1rem; background: var(--surface); border: 1px solid var(--glass-border); color: var(--muted); font-family: var(--font-label); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 30px; cursor: none; transition: all 0.25s ease; box-shadow: var(--shadow-sm); }
-  .filter-btn.active, .filter-btn:hover { border-color: var(--rose); color: var(--rose); background: var(--rose-lt); }
-  .jobs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.4rem; }
-  .job-card { background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 2rem; cursor: none; box-shadow: var(--shadow-sm); transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; position: relative; overflow: hidden; }
-  .job-card::before { content:''; position: absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--rose), var(--mauve)); opacity:0; transition: opacity 0.35s ease; }
-  .job-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(201,113,122,0.2); }
-  .job-card:hover::before { opacity:1; }
-  .job-card.hidden { display: none; }
-  .job-role { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 1.2rem; line-height: 1.2; }
-  .job-role small { font-size: 0.78em; color: var(--muted); }
-  .job-meta { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.4rem; }
-  .job-meta-row { display: flex; align-items: flex-start; gap: 0.75rem; }
-  .meta-icon { font-size: 0.7rem; color: var(--rose); min-width: 1rem; margin-top: 0.1rem; }
-  .meta-label { font-family: var(--font-label); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted-lt); min-width: 78px; }
-  .meta-value { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
-  .job-salary { display: inline-block; padding: 0.38rem 1rem; background: var(--gold-lt); border: 1px solid rgba(196,149,106,0.22); border-radius: 30px; font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--gold); }
-  .job-apply { margin-top: 1.4rem; display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-label); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); opacity:0; transform: translateX(-8px); transition: opacity 0.3s, transform 0.3s; text-decoration: none; }
-  .job-card:hover .job-apply { opacity:1; transform: translateX(0); }
-
-  #why { background: var(--bg-warm); border-top: 1px solid var(--glass-border); }
-  .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; margin-top: 4rem; }
-  .why-item { background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
-  .why-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(201,113,122,0.2); }
-  .why-num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: rgba(201,113,122,0.22); line-height: 1; margin-bottom: 1rem; }
-  .why-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--ink); margin-bottom: 0.7rem; }
-  .why-desc { font-size: 0.84rem; line-height: 1.8; color: var(--muted); }
-
-  #experience { background: var(--bg); }
-  .exp-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
-  .counters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2.5rem; }
-  .counter-card { background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 1.8rem; text-align: center; box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s; }
-  .counter-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  .counter-num { font-family: var(--font-display); font-size: 3.2rem; font-weight: 300; color: var(--rose); line-height: 1; }
-  .counter-suffix { font-family: var(--font-display); font-size: 2rem; color: var(--rose); }
-  .counter-label { font-family: var(--font-label); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
-  .timeline { position: relative; padding-left: 1.5rem; }
-  .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background: linear-gradient(to bottom, var(--rose), transparent); }
-  .timeline-item { position: relative; padding-bottom: 2.5rem; opacity:0; transform: translateX(-18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .timeline-item.visible { opacity:1; transform: translateX(0); }
-  .timeline-dot { position: absolute; left: -1.8rem; top:0.3rem; width: 8px; height: 8px; border-radius: 50%; background: var(--rose); box-shadow: 0 0 10px var(--rose-glow); }
-  .timeline-year { font-family: var(--font-label); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.4rem; }
-  .timeline-title { font-family: var(--font-display); font-size: 1.12rem; font-weight: 400; color: var(--ink); margin-bottom: 0.4rem; }
-  .timeline-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.75; }
-
-  .keywords-map { position: relative; height: 260px; border: 1px solid var(--glass-border); border-radius: var(--radius); overflow: hidden; background: linear-gradient(135deg, #fdf0f2 0%, #f0ecf8 100%); box-shadow: var(--shadow-sm); margin-top: 2rem; }
-  .map-label { position: absolute; font-family: var(--font-label); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-lt); top:1rem; left:1.2rem; }
-  .map-pin { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
-  .pin-dot { width: 10px; height: 10px; border-radius: 50%; animation: pulse-pin 2.5s ease infinite; }
-  .pin-dot.vn { background: var(--rose); box-shadow: 0 0 10px var(--rose-glow); }
-  .pin-dot.jp { background: var(--gold); box-shadow: 0 0 10px rgba(196,149,106,0.5); animation-delay: 1.25s; }
-  .pin-label { font-family: var(--font-label); font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  .pin-label.vn { color: var(--rose); }
-  .pin-label.jp { color: var(--gold); }
-  .map-line { position: absolute; top:0; left:0; width:100%; height:100%; pointer-events: none; }
-  .float-keyword { position: absolute; font-family: var(--font-label); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(160,120,152,0.55); animation: floatKeyword 6s ease infinite; white-space: nowrap; }
-
-  #testimonials { background: var(--bg-blush); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
-  .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.4rem; margin-top: 4rem; }
-  .testi-card { background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-sm); transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s; }
-  .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(201,113,122,0.18); }
-  .testi-quote { font-family: var(--font-display); font-size: 2.4rem; color: var(--rose); line-height: 1; opacity: 0.35; margin-bottom: 0.9rem; }
-  .testi-text { font-size: 0.88rem; line-height: 1.85; color: var(--ink-soft); font-style: italic; margin-bottom: 1.4rem; }
-  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
-  .author-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--rose-lt), var(--mauve-lt)); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.9rem; color: var(--muted); }
-  .author-name { font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
-  .author-role { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
-  .stars { color: var(--gold); font-size: 0.72rem; letter-spacing: 0.1em; margin-bottom: 0.7rem; }
-
-  #contact { background: linear-gradient(150deg, #fdf5f6 0%, #f4edf8 60%, #faf3ec 100%); border-top: 1px solid var(--glass-border); }
-  .contact-inner { max-width: 680px; margin:0 auto; text-align: center; padding: 10rem 2rem; }
-  .contact-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; color: var(--ink); margin-bottom: 1.4rem; line-height: 1.1; }
-  .contact-title em { font-style: italic; color: var(--rose); }
-  .contact-desc { font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 2.5rem; }
-  .contact-links { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
-  .contact-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--ink-soft); font-size: 0.9rem; transition: color 0.3s; }
-  .contact-link:hover { color: var(--rose); }
-  .contact-link-icon { color: var(--rose); }
-  .btn-cta { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.05rem 2.8rem; background: var(--rose); color: #fff; font-family: var(--font-label); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border-radius: 40px; border: 1.5px solid var(--rose); cursor: none; box-shadow: 0 6px 28px var(--rose-glow); transition: all 0.3s ease; }
-  .btn-cta:hover { background: #b85e67; transform: translateY(-2px); box-shadow: 0 10px 36px var(--rose-glow); }
-
-  footer { background: var(--bg-warm); border-top: 1px solid var(--glass-border); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
-  .footer-brand { font-family: var(--font-display); font-size: 1rem; font-weight: 300; color: var(--muted); }
-  .footer-brand span { color: var(--rose); }
-  .footer-copy { font-family: var(--font-label); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted-lt); }
-
-  @keyframes fadeUp   { from { opacity:0; transform: translateY(28px); } to { opacity:1; transform: translateY(0); } }
-  @keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
-  @keyframes scrollPulse { 0%,100% { transform:scaleY(1); opacity:1; } 50% { transform:scaleY(0.55); opacity:0.3; } }
-  @keyframes pulse-pin { 0%,100% { transform:scale(1); } 50% { transform:scale(1.35); } }
-  @keyframes floatKeyword { 0%,100% { transform:translateY(0); opacity:0.35; } 50% { transform:translateY(-7px); opacity:0.65; } }
-
-  .reveal { opacity:0; transform: translateY(36px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity:1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay:0.1s; }
-  .reveal-delay-2 { transition-delay:0.2s; }
-  .reveal-delay-3 { transition-delay:0.3s; }
-  .reveal-delay-4 { transition-delay:0.4s; }
-
-  @media (max-width:1024px) {
-    nav { padding: 1.4rem 2.5rem; }
-    .section-inner { padding: 6rem 2.5rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .about-visual { max-height: 260px; aspect-ratio: 16/9; }
-    .why-grid { grid-template-columns: repeat(2,1fr); }
-    .exp-layout { grid-template-columns: 1fr; gap: 3rem; }
-  }
-  @media (max-width:768px) {
-    body { cursor: auto; }
-    .cursor, .cursor-ring, .mouse-glow { display: none; }
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    .section-inner { padding: 5rem 1.5rem; }
-    .why-grid { grid-template-columns: 1fr; }
-    .counters-grid { grid-template-columns: 1fr 1fr; }
-    .jobs-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
-    .hero-title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
-  }
+:root{--bg:#faf8f5;--bg-warm:#f5f1ec;--bg-blush:#f9f2f4;--surface:#ffffff;--glass:rgba(255,255,255,0.72);--glass-border:rgba(190,160,150,0.18);--ink:#2c2420;--ink-soft:#5a4a44;--muted:#a0897f;--muted-lt:#c8b5ad;--rose:#c9717a;--rose-lt:rgba(201,113,122,0.12);--rose-glow:rgba(201,113,122,0.22);--mauve:#a07898;--mauve-lt:rgba(160,120,152,0.1);--gold:#c4956a;--gold-lt:rgba(196,149,106,0.14);--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Jost',sans-serif;--font-label:'Syne',sans-serif;--radius:8px;--shadow-sm:0 2px 16px rgba(100,60,50,0.07);--shadow-md:0 8px 40px rgba(100,60,50,0.10);--shadow-lg:0 20px 60px rgba(100,60,50,0.13)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-weight:300;overflow-x:hidden}
+nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,248,245,0.92);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--glass-border)}
+.nav-logo{font-family:var(--font-display);font-size:1.4rem;font-weight:400;letter-spacing:0.02em;color:var(--ink);text-decoration:none}
+.nav-logo span{color:var(--rose)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:var(--font-label);font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:var(--ink)}
+#hero{position:relative;min-height:500px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;background:linear-gradient(160deg,#fdf8f2 0%,#f8eff2 40%,#f3edf8 100%);padding:5rem 2rem 4rem}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.35;pointer-events:none}
+.blob-1{width:420px;height:420px;top:-80px;right:-60px;background:radial-gradient(circle,#f5c6cc,transparent 70%)}
+.blob-2{width:320px;height:320px;bottom:-60px;left:-40px;background:radial-gradient(circle,#d9c6e8,transparent 70%)}
+.hero-content{position:relative;z-index:2;padding:0 2rem;max-width:800px}
+.hero-eyebrow{font-family:var(--font-label);font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:1.8rem;animation:fadeUp 1s ease 0.5s both}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.08;letter-spacing:-0.01em;color:var(--ink);animation:fadeUp 1.1s ease 0.7s both;max-width:800px}
+.hero-title em{font-style:italic;color:var(--rose)}
+.hero-sub{margin-top:1.4rem;font-size:0.95rem;color:var(--muted);font-weight:300;letter-spacing:0.04em;animation:fadeUp 1.1s ease 1s both}
+.hero-cta{margin-top:2.4rem;animation:fadeUp 1.1s ease 1.2s both;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 2rem;background:var(--rose);color:#fff;font-family:var(--font-label);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--rose);border-radius:40px;transition:background 0.3s,box-shadow 0.3s,transform 0.2s;box-shadow:0 4px 20px var(--rose-glow)}
+.btn-primary:hover{background:#b85e67;box-shadow:0 6px 30px var(--rose-glow);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 2rem;background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border:1.5px solid var(--glass-border);color:var(--ink-soft);font-family:var(--font-label);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:border-color 0.3s,color 0.3s,transform 0.2s}
+.btn-ghost:hover{border-color:var(--rose);color:var(--rose);transform:translateY(-2px)}
+section{position:relative}
+.section-inner{max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.section-label{font-family:var(--font-label);font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:0.9rem}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:1.5rem}
+.section-title em{font-style:italic;color:var(--rose)}
+#about{background:var(--bg-blush);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:center}
+.about-visual{position:relative;aspect-ratio:3/4;max-height:420px}
+.about-portrait{width:100%;height:100%;background:linear-gradient(135deg,#f9edf0 0%,#ede0f0 100%);border:1px solid var(--glass-border);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;box-shadow:var(--shadow-md)}
+.portrait-initials{font-family:var(--font-display);font-size:8rem;font-weight:300;color:rgba(201,113,122,0.18);line-height:1;user-select:none;letter-spacing:-0.05em}
+.about-badge{position:absolute;bottom:-1rem;right:-1rem;background:var(--surface);border:1px solid var(--glass-border);padding:1rem 1.3rem;border-radius:var(--radius);box-shadow:var(--shadow-md)}
+.badge-num{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--rose);line-height:1}
+.badge-label{font-family:var(--font-label);font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem}
+.about-intro{font-size:0.92rem;line-height:1.9;color:var(--ink-soft);margin-bottom:1rem}
+.about-intro strong{color:var(--ink);font-weight:500}
+.about-intro a{color:var(--rose);text-decoration:none}
+.about-intro a:hover{text-decoration:underline}
+.about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.tag{padding:0.38rem 1rem;background:var(--surface);border:1px solid var(--glass-border);border-radius:30px;font-family:var(--font-label);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);transition:all 0.25s ease;box-shadow:var(--shadow-sm)}
+.tag:hover{border-color:var(--rose);color:var(--rose);background:var(--rose-lt)}
+#jobs{background:var(--bg)}
+.jobs-filter{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{padding:0.42rem 1.1rem;background:var(--surface);border:1px solid var(--glass-border);color:var(--muted);font-family:var(--font-label);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border-radius:30px;cursor:pointer;transition:all 0.25s ease;box-shadow:var(--shadow-sm)}
+.filter-btn.active,.filter-btn:hover{border-color:var(--rose);color:var(--rose);background:var(--rose-lt)}
+.jobs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
+.job-card{background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow-sm);transition:transform 0.35s ease,box-shadow 0.35s ease,border-color 0.35s ease;position:relative;overflow:hidden}
+.job-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--rose),var(--mauve));opacity:0;transition:opacity 0.35s ease}
+.job-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(201,113,122,0.2)}
+.job-card:hover::before{opacity:1}
+.job-card.hidden{display:none}
+.job-role{font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:1.1rem;line-height:1.2}
+.job-role small{font-size:0.78em;color:var(--muted)}
+.job-meta{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.2rem}
+.job-meta-row{display:flex;align-items:flex-start;gap:0.7rem}
+.meta-icon{font-size:0.7rem;color:var(--rose);min-width:1rem;margin-top:0.1rem}
+.meta-label{font-family:var(--font-label);font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted-lt);min-width:72px}
+.meta-value{font-size:0.8rem;color:var(--ink-soft);line-height:1.4}
+.job-salary{display:inline-block;padding:0.38rem 1rem;background:var(--gold-lt);border:1px solid rgba(196,149,106,0.22);border-radius:30px;font-family:var(--font-label);font-size:0.68rem;letter-spacing:0.1em;color:var(--gold)}
+.job-apply{margin-top:1.2rem;display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--font-label);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rose);opacity:0;transform:translateX(-8px);transition:opacity 0.3s,transform 0.3s;text-decoration:none}
+.job-card:hover .job-apply{opacity:1;transform:translateX(0)}
+#why{background:var(--bg-warm);border-top:1px solid var(--glass-border)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+.why-item{background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-sm);transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s}
+.why-item:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(201,113,122,0.2)}
+.why-num{font-family:var(--font-display);font-size:2.6rem;font-weight:300;color:rgba(201,113,122,0.22);line-height:1;margin-bottom:0.9rem}
+.why-title{font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.7rem}
+.why-desc{font-size:0.83rem;line-height:1.8;color:var(--muted)}
+#experience{background:var(--bg)}
+.exp-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+.counters-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:2rem}
+.counter-card{background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.6rem;text-align:center;box-shadow:var(--shadow-sm);transition:transform 0.3s,box-shadow 0.3s}
+.counter-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.counter-num{font-family:var(--font-display);font-size:3rem;font-weight:300;color:var(--rose);line-height:1}
+.counter-suffix{font-family:var(--font-display);font-size:2rem;color:var(--rose)}
+.counter-label{font-family:var(--font-label);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:0.4rem}
+.timeline{position:relative;padding-left:1.5rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--rose),transparent)}
+.timeline-item{position:relative;padding-bottom:2.2rem}
+.timeline-dot{position:absolute;left:-1.8rem;top:0.3rem;width:8px;height:8px;border-radius:50%;background:var(--rose);box-shadow:0 0 10px var(--rose-glow)}
+.timeline-year{font-family:var(--font-label);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:0.4rem}
+.timeline-title{font-family:var(--font-display);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem}
+.timeline-desc{font-size:0.82rem;color:var(--muted);line-height:1.75}
+#testimonials{background:var(--bg-blush);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.4rem;margin-top:3rem}
+.testi-card{background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow-sm);transition:transform 0.35s,box-shadow 0.35s,border-color 0.35s}
+.testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(201,113,122,0.18)}
+.testi-quote{font-family:var(--font-display);font-size:2.2rem;color:var(--rose);line-height:1;opacity:0.35;margin-bottom:0.8rem}
+.testi-text{font-size:0.86rem;line-height:1.85;color:var(--ink-soft);font-style:italic;margin-bottom:1.2rem}
+.testi-author{display:flex;align-items:center;gap:0.75rem}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose-lt),var(--mauve-lt));border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;color:var(--muted)}
+.author-name{font-family:var(--font-label);font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink)}
+.author-role{font-size:0.74rem;color:var(--muted);margin-top:0.1rem}
+.stars{color:var(--gold);font-size:0.72rem;letter-spacing:0.1em;margin-bottom:0.7rem}
+#contact{background:linear-gradient(150deg,#fdf5f6 0%,#f4edf8 60%,#faf3ec 100%);border-top:1px solid var(--glass-border)}
+.contact-inner{max-width:620px;margin:0 auto;text-align:center;padding:7rem 2rem}
+.contact-title{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;color:var(--ink);margin-bottom:1.2rem;line-height:1.1}
+.contact-title em{font-style:italic;color:var(--rose)}
+.contact-desc{font-size:0.95rem;color:var(--muted);line-height:1.85;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-bottom:2rem}
+.contact-link{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:var(--ink-soft);font-size:0.88rem;transition:color 0.3s}
+.contact-link:hover{color:var(--rose)}
+.contact-link-icon{color:var(--rose)}
+.btn-cta{display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.6rem;background:var(--rose);color:#fff;font-family:var(--font-label);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;border-radius:40px;border:1.5px solid var(--rose);box-shadow:0 6px 28px var(--rose-glow);transition:all 0.3s ease}
+.btn-cta:hover{background:#b85e67;transform:translateY(-2px);box-shadow:0 10px 36px var(--rose-glow)}
+footer{background:var(--bg-warm);border-top:1px solid var(--glass-border);padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.footer-brand{font-family:var(--font-display);font-size:1rem;font-weight:300;color:var(--muted)}
+.footer-brand span{color:var(--rose)}
+.footer-copy{font-family:var(--font-label);font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted-lt)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:2.5rem}.about-visual{max-height:220px;aspect-ratio:16/9}.why-grid{grid-template-columns:repeat(2,1fr)}.exp-layout{grid-template-columns:1fr;gap:2.5rem}.section-inner{padding:4.5rem 2rem}}
+@media(max-width:640px){.why-grid{grid-template-columns:1fr}.jobs-grid{grid-template-columns:1fr}.nav-links{display:none}.section-inner{padding:3.5rem 1.5rem}footer{flex-direction:column;gap:1rem;text-align:center}}
 </style>
 </head>
 <body>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="mouse-glow" id="mouseGlow"></div>
-
 <nav id="nav">
-  <a href="#hero" class="nav-logo">Ramu<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#jobs">Opportunities</a></li>
-    <li><a href="#My">My hobbies</a></li>
-    <li><a href="#testimonials">Experience</a></li>
-    <li><a href="#contact">Connect</a></li>
-  </ul>
+<a href="#hero" class="nav-logo">Ramu<span>.</span></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#jobs">Opportunities</a></li>
+<li><a href="#why">Why Me</a></li>
+<li><a href="#testimonials">Stories</a></li>
+<li><a href="#contact">Connect</a></li>
+</ul>
 </nav>
 
 <section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-blob blob-1"></div>
-  <div class="hero-blob blob-2"></div>
-  <div class="hero-blob blob-3"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">IT Talent Partner · Japan · 6 Years Experience</p>
-    <h1 class="hero-title">Chia sẻ cùng<br><em>Nguyên Lâm</em></h1>
-    <p class="hero-sub">Hôm nay của bạn thế nào? Hãy trò chuyện cùng mình.</p>
-    <div class="hero-cta">
-      <a href="#jobs" class="btn-primary">Khám phá các cơ hội →</a>
-      <a href="#contact" class="btn-ghost">Get In Touch</a>
-    </div>
-  </div>
-  <div class="scroll-indicator">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
+<div class="hero-blob blob-1"></div>
+<div class="hero-blob blob-2"></div>
+<div class="hero-content">
+<p class="hero-eyebrow">IT Talent Partner · Japan · 6 Years Experience</p>
+<h1 class="hero-title">Connecting People,<br><em>Technology</em> &amp; Future.</h1>
+<p class="hero-sub">HR Style Life — where recruitment becomes human connection.</p>
+<div class="hero-cta">
+<a href="#jobs" class="btn-primary">Explore Opportunities →</a>
+<a href="#contact" class="btn-ghost">Get In Touch</a>
+</div>
+</div>
 </section>
 
 <section id="about">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-visual reveal">
-        <img src="Profile.img" alt="Nguyen Lam"
-          style="
-          width:100%;
-          height:600px;
-          object-fit:cover;
-          border-radius:24px;
-          filter: grayscale(10%);
-          "
-          ></div>
-        <div class="about-badge"><div class="badge-num">6+</div><div class="badge-label">Years in IT Recruiting</div></div>
-      </div>
-      <div class="about-text">
-        <p class="section-label reveal">About</p>
-        <h2 class="section-title reveal reveal-delay-1">Vài điều nhỏ<br>về<em>Ramu</em></h2>
-        <div class="about-intro reveal reveal-delay-2">
-          <p>Cảm ơn bạn đã ghé thăm trang của mình!💙</p><br>
-          <p>Mình là <strong>Nguyên Lâm</strong> (nickname <strong>Ramu</strong>).<br> Là một cô nàng HR độc thân, vui tánh, xuất thân từ miền đất võ của Việt Nam. (Bạn đoán được là tỉnh nào không?).<br>Ngót nghét cũng gần<strong>6 năm</strong> mình lăn lộn với thế giới tuyển dụng IT cho thị trường Việt Nam - Nhật Bản.</p><br>
-          <p>Hiện tại mình đang làm việc tại <strong>Rikkei Japan</strong>, hỗ trợ tuyển dụng cho toàn bộ các chi nhánh tại Nhật từ Tokyo, Osaka, Nagoya, Kobe, Fukuoka, Hokuriku, Sapporo.</p><br>
-          <p>Mình chủ yếu tuyển các vị trí: <strong> SE /BrSE /AI /SAP /Salesforce,...</strong>, và một số các vị trí IT và Non-IT khác.</p><br>
-          <p>Nếu bạn đang có quan tâm bất kỳ cơ hội nào tại Rikkei Japan, muốn tìm hiểu về thị trường IT Nhật, hay đơn giản chỉ muốn có một người để "tám chuyện" thì đừng ngại nhắn tin cho mình nhé: <a href="https://www.facebook.com/nguyenlt.work">FB Nguyên Lâm</a></p>
-        </div>
-        <div class="about-tags reveal reveal-delay-3">
-          <span class="tag">Java / C# / PHP</span><span class="tag">AWS / Cloud</span><span class="tag">BrSE</span>
-          <span class="tag">AI Engineer</span><span class="tag">SAP</span><span class="tag">Salesforce</span>
-          <span class="tag">JLPT N2 / N1</span><span class="tag">Tokyo · Osaka · Kobe</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="about-grid">
+<div class="about-visual">
+<div class="about-portrait"><div class="portrait-initials">NL</div></div>
+<div class="about-badge"><div class="badge-num">6+</div><div class="badge-label">Years in IT Recruiting</div></div>
+</div>
+<div class="about-text">
+<p class="section-label">About</p>
+<h2 class="section-title">A Recruiter<br>Who <em>Understands</em><br>Your World</h2>
+<div class="about-intro">
+<p>Thank you for visiting my profile!</p><br>
+<p>My name is <strong>Nguyên Lâm</strong> (nickname <strong>Ramu</strong>) from Vietnam, with around <strong>6 years of experience</strong> in IT recruitment for Japanese and Vietnamese markets.</p><br>
+<p>I specialize in sourcing talent for: <strong>SE / BrSE / AI / SAP / Salesforce</strong>, and other IT roles.</p><br>
+<p>Currently, I work at <strong>Rikkei Japan</strong>, a company that provides high-quality IT services and staffing solutions for Japanese and international clients.</p><br>
+<p>If you're interested in exploring opportunities, feel free to contact me: <a href="mailto:nguyenlt@rikkeisoft.com">nguyenlt@rikkeisoft.com</a></p>
+</div>
+<div class="about-tags">
+<span class="tag">Java / C# / PHP</span><span class="tag">AWS / Cloud</span><span class="tag">BrSE</span>
+<span class="tag">AI Engineer</span><span class="tag">SAP</span><span class="tag">Salesforce</span>
+<span class="tag">JLPT N2 / N1</span><span class="tag">Tokyo · Osaka · Kobe</span>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <section id="jobs">
-  <div class="section-inner">
-    <p class="section-label reveal">Featured Opportunities</p>
-    <h2 class="section-title reveal reveal-delay-1">Open <em>Positions</em><br>at Rikkei Japan</h2>
-    <div class="jobs-filter reveal reveal-delay-2">
-      <button class="filter-btn active" data-filter="all">All Roles</button>
-      <button class="filter-btn" data-filter="tokyo">Tokyo</button>
-      <button class="filter-btn" data-filter="osaka">Osaka</button>
-      <button class="filter-btn" data-filter="n2">JLPT N2</button>
-      <button class="filter-btn" data-filter="n1">JLPT N1</button>
-      <button class="filter-btn" data-filter="ai">AI / Cloud</button>
-      <button class="filter-btn" data-filter="consulting">Consulting</button>
-    </div>
-    <div class="jobs-grid">
-      <div class="job-card" data-tags="tokyo osaka n2 se">
-        <div class="job-role">Software Engineer<br><small>Java / C# / PHP / AWS</small></div>
-        <div class="job-meta">
-          <div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo · Osaka · Nagoya · Kobe · Fukuoka · Sapporo</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">3+ years</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2</span></div>
-        </div>
-        <div class="job-salary">¥ 4M – 6M / year</div>
-        <a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
-      </div>
-      <div class="job-card" data-tags="tokyo osaka n2 brse">
-        <div class="job-role">Bridge SE<br><small>JP-VN Communication Bridge</small></div>
-        <div class="job-meta">
-          <div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo · Osaka · Nagoya · Kobe · Fukuoka · Sapporo</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">3+ years</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2</span></div>
-        </div>
-        <div class="job-salary">¥ 5M – 7M / year</div>
-        <a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
-      </div>
-      <div class="job-card" data-tags="tokyo n2 ai">
-        <div class="job-role">AI Engineer<br><small>Machine Learning / LLM</small></div>
-        <div class="job-meta">
-          <div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo · Kobe</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">3+ years</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2</span></div>
-        </div>
-        <div class="job-salary">¥ 5M – 9M / year</div>
-        <a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
-      </div>
-      <div class="job-card" data-tags="tokyo n2 consulting salesforce">
-        <div class="job-role">Salesforce Consultant<br><small>CRM / Platform Specialist</small></div>
-        <div class="job-meta">
-          <div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">1+ years</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2 + TOEIC / IELTS</span></div>
-        </div>
-        <div class="job-salary">¥ 5M – 9M / year</div>
-        <a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
-      </div>
-      <div class="job-card" data-tags="tokyo osaka n2 consulting sap">
-        <div class="job-role">SAP Consultant<br><small>ERP Implementation</small></div>
-        <div class="job-meta">
-          <div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Fulltime / Hybrid</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">5+ years</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2+</span></div>
-        </div>
-        <div class="job-salary">¥ 6M – 10M / year</div>
-        <a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
-      </div>
-      <div class="job-card" data-tags="tokyo n1">
-        <div class="job-role">IT Sales<br><small>Business Development</small></div>
-        <div class="job-meta">
-          <div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo · Fukuoka</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">3+ years</span></div>
-          <div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N1 — Business Level</span></div>
-        </div>
-        <div class="job-salary">¥ 5M – 10M / year</div>
-        <a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-label">Featured Opportunities</p>
+<h2 class="section-title">Open <em>Positions</em><br>at Rikkei Japan</h2>
+<div class="jobs-filter">
+<button class="filter-btn active" data-filter="all">All Roles</button>
+<button class="filter-btn" data-filter="tokyo">Tokyo</button>
+<button class="filter-btn" data-filter="osaka">Osaka</button>
+<button class="filter-btn" data-filter="n2">JLPT N2</button>
+<button class="filter-btn" data-filter="n1">JLPT N1</button>
+<button class="filter-btn" data-filter="ai">AI / Cloud</button>
+<button class="filter-btn" data-filter="consulting">Consulting</button>
+</div>
+<div class="jobs-grid">
+<div class="job-card" data-tags="tokyo osaka n2 se">
+<div class="job-role">Software Engineer<br><small>Java / C# / PHP / AWS</small></div>
+<div class="job-meta">
+<div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo · Osaka · Nagoya · Kobe</span></div>
+<div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">3+ years</span></div>
+<div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2</span></div>
+</div>
+<div class="job-salary">¥ 4M – 6M / year</div>
+<a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
+</div>
+<div class="job-card" data-tags="tokyo osaka n2 brse">
+<div class="job-role">Bridge SE<br><small>JP-VN Communication Bridge</small></div>
+<div class="job-meta">
+<div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo · Osaka · Nagoya</span></div>
+<div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">3+ years</span></div>
+<div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2</span></div>
+</div>
+<div class="job-salary">¥ 5M – 7M / year</div>
+<a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
+</div>
+<div class="job-card" data-tags="tokyo n2 ai">
+<div class="job-role">AI Engineer<br><small>Machine Learning / LLM</small></div>
+<div class="job-meta">
+<div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo · Kobe</span></div>
+<div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">3+ years</span></div>
+<div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2</span></div>
+</div>
+<div class="job-salary">¥ 5M – 9M / year</div>
+<a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
+</div>
+<div class="job-card" data-tags="tokyo n2 consulting salesforce">
+<div class="job-role">Salesforce Consultant<br><small>CRM / Platform Specialist</small></div>
+<div class="job-meta">
+<div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo</span></div>
+<div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">1+ years</span></div>
+<div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2 + TOEIC</span></div>
+</div>
+<div class="job-salary">¥ 5M – 9M / year</div>
+<a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
+</div>
+<div class="job-card" data-tags="tokyo osaka n2 consulting sap">
+<div class="job-role">SAP Consultant<br><small>ERP Implementation</small></div>
+<div class="job-meta">
+<div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Fulltime / Hybrid</span></div>
+<div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">5+ years</span></div>
+<div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N2+</span></div>
+</div>
+<div class="job-salary">¥ 6M – 10M / year</div>
+<a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
+</div>
+<div class="job-card" data-tags="tokyo n1">
+<div class="job-role">IT Sales<br><small>Business Development</small></div>
+<div class="job-meta">
+<div class="job-meta-row"><span class="meta-icon">◎</span><span class="meta-label">Location</span><span class="meta-value">Tokyo · Fukuoka</span></div>
+<div class="job-meta-row"><span class="meta-icon">◉</span><span class="meta-label">Experience</span><span class="meta-value">3+ years</span></div>
+<div class="job-meta-row"><span class="meta-icon">◈</span><span class="meta-label">Japanese</span><span class="meta-value">JLPT N1</span></div>
+</div>
+<div class="job-salary">¥ 5M – 10M / year</div>
+<a href="mailto:nguyenlt@rikkeisoft.com" class="job-apply">Apply Now →</a>
+</div>
+</div>
+</div>
 </section>
 
-<section id="My">
-  <div class="section-inner">
-    <p class="section-label reveal">My Hobbies</p>
-    <h2 class="section-title reveal reveal-delay-1">Recruiting Rooted<br>in <em>Trust</em> & Humanity</h2>
-    <p style="color:var(--muted);font-size:0.95rem;line-height:1.85;max-width:540px;" class="reveal reveal-delay-2">I don't just fill positions — I build careers. My approach combines deep market knowledge with genuine care for the people I work with.</p>
-    <div class="My-grid reveal reveal-delay-3">
-      <div class="My-item"><div class="My-num">01</div><div class="My-title">Bicultural Understanding</div><div class="My-desc">Deep knowledge of both Japanese and Vietnamese work culture — bridging expectations, communication styles, and professional values across both worlds.</div></div>
-      <div class="My-item"><div class="My-num">02</div><div class="My-title">Long-Term Career Support</div><div class="My-desc">Beyond placement — I stay connected with candidates throughout their career journey, offering guidance and opportunities as they grow.</div></div>
-      <div class="My-item"><div class="My-num">03</div><div class="My-title">Honest Communication</div><div class="My-desc">No inflated promises. I give realistic information about roles, salaries, and company culture so you can make confident, informed decisions.</div></div>
-      <div class="My-item"><div class="My-num">04</div><div class="My-title">Insider Market Access</div><div class="My-desc">Direct connections with hiring managers across Japan's top IT companies — giving you access to opportunities before they're publicly listed.</div></div>
-      <div class="My-item"><div class="My-num">05</div><div class="My-title">Personalized Matching</div><div class="My-desc">Every candidate is unique. I take time to understand your skills, goals, and lifestyle to find a role that truly fits — not just on paper.</div></div>
-      <div class="My-item"><div class="My-num">06</div><div class="My-title">Human-Centered Approach</div><div class="My-desc">Technology connects us, but people make the difference. My recruitment philosophy puts human relationships at the center of every process.</div></div>
-    </div>
-  </div>
+<section id="why">
+<div class="section-inner">
+<p class="section-label">Why Connect With Me</p>
+<h2 class="section-title">Recruiting Rooted<br>in <em>Trust</em> &amp; Humanity</h2>
+<p style="color:var(--muted);font-size:0.92rem;line-height:1.85;max-width:540px;">I don't just fill positions — I build careers. My approach combines deep market knowledge with genuine care for the people I work with.</p>
+<div class="why-grid">
+<div class="why-item"><div class="why-num">01</div><div class="why-title">Bicultural Understanding</div><div class="why-desc">Deep knowledge of both Japanese and Vietnamese work culture — bridging expectations, communication styles, and professional values across both worlds.</div></div>
+<div class="why-item"><div class="why-num">02</div><div class="why-title">Long-Term Career Support</div><div class="why-desc">Beyond placement — I stay connected with candidates throughout their career journey, offering guidance and opportunities as they grow.</div></div>
+<div class="why-item"><div class="why-num">03</div><div class="why-title">Honest Communication</div><div class="why-desc">No inflated promises. I give realistic information about roles, salaries, and company culture so you can make confident, informed decisions.</div></div>
+<div class="why-item"><div class="why-num">04</div><div class="why-title">Insider Market Access</div><div class="why-desc">Direct connections with hiring managers across Japan's top IT companies — giving you access to opportunities before they're publicly listed.</div></div>
+<div class="why-item"><div class="why-num">05</div><div class="why-title">Personalized Matching</div><div class="why-desc">Every candidate is unique. I take time to understand your skills, goals, and lifestyle to find a role that truly fits — not just on paper.</div></div>
+<div class="why-item"><div class="why-num">06</div><div class="why-title">Human-Centered Approach</div><div class="why-desc">Technology connects us, but people make the difference. My recruitment philosophy puts human relationships at the center of every process.</div></div>
+</div>
+</div>
 </section>
 
 <section id="experience">
-  <div class="section-inner">
-    <p class="section-label reveal">The Journey</p>
-    <h2 class="section-title reveal reveal-delay-1">6 Years of<br><em>Connecting</em> Worlds</h2>
-    <div class="exp-layout">
-      <div>
-        <div class="counters-grid">
-          <div class="counter-card reveal"><div class="counter-num" data-target="200"><span class="count-num">0</span><span class="counter-suffix">+</span></div><div class="counter-label">Placements Made</div></div>
-          <div class="counter-card reveal reveal-delay-1"><div class="counter-num" data-target="6"><span class="count-num">0</span><span class="counter-suffix">+</span></div><div class="counter-label">Years Experience</div></div>
-          <div class="counter-card reveal reveal-delay-2"><div class="counter-num" data-target="50"><span class="count-num">0</span><span class="counter-suffix">+</span></div><div class="counter-label">Partner Companies</div></div>
-          <div class="counter-card reveal reveal-delay-3"><div class="counter-num" data-target="2"><span class="count-num">0</span></div><div class="counter-label">Markets Served</div></div>
-        </div>
-        <div class="keywords-map">
-          <span class="map-label">Vietnam × Japan Connection</span>
-          <div class="map-pin" style="left:33%;top:52%;"><div class="pin-dot vn"></div><span class="pin-label vn">Vietnam</span></div>
-          <div class="map-pin" style="left:62%;top:24%;"><div class="pin-dot jp"></div><span class="pin-label jp">Japan</span></div>
-          <svg class="map-line" viewBox="0 0 500 260">
-            <path d="M165,135 Q270,75 310,71" stroke="url(#lg2)" stroke-width="1.5" fill="none" stroke-dasharray="5,4">
-              <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
-            </path>
-            <defs>
-              <linearGradient id="lg2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#c9717a;stop-opacity:0.8"/>
-                <stop offset="100%" style="stop-color:#c4956a;stop-opacity:0.8"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <span class="float-keyword" style="left:8%;top:18%;animation-delay:0s">AI Engineering</span>
-          <span class="float-keyword" style="left:52%;top:68%;animation-delay:1s">SAP</span>
-          <span class="float-keyword" style="left:72%;top:48%;animation-delay:2s">Salesforce</span>
-          <span class="float-keyword" style="left:18%;top:78%;animation-delay:1.5s">BrSE</span>
-          <span class="float-keyword" style="left:38%;top:12%;animation-delay:0.5s">JLPT N2</span>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2019</div><div class="timeline-title">Entered IT Recruitment</div><div class="timeline-desc">Began specializing in technology talent acquisition, focusing on the Vietnamese IT market and understanding technical roles deeply.</div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2020 – 2021</div><div class="timeline-title">Japan Market Focus</div><div class="timeline-desc">Expanded into the Japanese IT market, building fluency in JLPT requirements, Japanese workplace culture, and Monozukuri philosophy.</div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2022 – 2023</div><div class="timeline-title">Rikkei Japan — Talent Partner</div><div class="timeline-desc">Joined Rikkei Japan to lead recruitment for SE, BrSE, and specialized roles across retail, logistics, and finance verticals.</div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2024 – 2025</div><div class="timeline-title">AI & Niche Tech Specialization</div><div class="timeline-desc">Expanded scope to AI Engineers, SAP Consultants, and Salesforce specialists — navigating Japan's digital transformation frontier.</div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2026 →</div><div class="timeline-title">Building the Future</div><div class="timeline-desc">Continuing to connect exceptional Vietnamese IT talent with Japan's most innovative companies — one career at a time.</div></div>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-label">The Journey</p>
+<h2 class="section-title">6 Years of<br><em>Connecting</em> Worlds</h2>
+<div class="exp-layout">
+<div>
+<div class="counters-grid">
+<div class="counter-card"><div class="counter-num" data-target="200"><span class="count-num">200</span><span class="counter-suffix">+</span></div><div class="counter-label">Placements Made</div></div>
+<div class="counter-card"><div class="counter-num" data-target="6"><span class="count-num">6</span><span class="counter-suffix">+</span></div><div class="counter-label">Years Experience</div></div>
+<div class="counter-card"><div class="counter-num" data-target="50"><span class="count-num">50</span><span class="counter-suffix">+</span></div><div class="counter-label">Partner Companies</div></div>
+<div class="counter-card"><div class="counter-num" data-target="2"><span class="count-num">2</span></div><div class="counter-label">Markets Served</div></div>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2019</div><div class="timeline-title">Entered IT Recruitment</div><div class="timeline-desc">Began specializing in technology talent acquisition, focusing on the Vietnamese IT market and understanding technical roles deeply.</div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2020 – 2021</div><div class="timeline-title">Japan Market Focus</div><div class="timeline-desc">Expanded into the Japanese IT market, building fluency in JLPT requirements, Japanese workplace culture, and Monozukuri philosophy.</div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2022 – 2023</div><div class="timeline-title">Rikkei Japan — Talent Partner</div><div class="timeline-desc">Joined Rikkei Japan to lead recruitment for SE, BrSE, and specialized roles across retail, logistics, and finance verticals.</div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2024 – 2025</div><div class="timeline-title">AI &amp; Niche Tech Specialization</div><div class="timeline-desc">Expanded scope to AI Engineers, SAP Consultants, and Salesforce specialists — navigating Japan's digital transformation frontier.</div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2026 →</div><div class="timeline-title">Building the Future</div><div class="timeline-desc">Continuing to connect exceptional Vietnamese IT talent with Japan's most innovative companies — one career at a time.</div></div>
+</div>
+</div>
+</div>
 </section>
 
 <section id="testimonials">
-  <div class="section-inner">
-    <p class="section-label reveal">Candidate Stories</p>
-    <h2 class="section-title reveal reveal-delay-1">Words from Those<br>Who've <em>Made the Journey</em></h2>
-    <div class="testi-grid">
-      <div class="testi-card reveal reveal-delay-1"><div class="stars">★★★★★</div><div class="testi-quote">"</div><div class="testi-text">Ramu genuinely understood what I was looking for — not just my technical skills but my personal goals. The process was fast, transparent, and I never felt like just another resume in a pile.</div><div class="testi-author"><div class="author-avatar">TH</div><div><div class="author-name">T. Hoang</div><div class="author-role">AI Engineer · Tokyo</div></div></div></div>
-      <div class="testi-card reveal reveal-delay-2"><div class="stars">★★★★★</div><div class="testi-quote">"</div><div class="testi-text">The advice I received was honest and realistic — no sugar-coating, just clear information about what to expect in Japan's IT market. That kind of respect is rare in recruiting.</div><div class="testi-author"><div class="author-avatar">MT</div><div><div class="author-name">M. Tran</div><div class="author-role">BrSE · Osaka</div></div></div></div>
-      <div class="testi-card reveal reveal-delay-3"><div class="stars">★★★★★</div><div class="testi-quote">"</div><div class="testi-text">From first contact to offer letter, everything moved quickly without feeling rushed. Ramu kept me updated at every step — friendly but always professional.</div><div class="testi-author"><div class="author-avatar">NP</div><div><div class="author-name">N. Pham</div><div class="author-role">SAP Consultant · Tokyo</div></div></div></div>
-      <div class="testi-card reveal reveal-delay-4"><div class="stars">★★★★★</div><div class="testi-quote">"</div><div class="testi-text">What sets Ramu apart is the long-term support. Even after I started my job, there was follow-up to make sure I was settling in well. That kind of care is something I truly appreciated.</div><div class="testi-author"><div class="author-avatar">DL</div><div><div class="author-name">D. Le</div><div class="author-role">Salesforce Dev · Kobe</div></div></div></div>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-label">Candidate Stories</p>
+<h2 class="section-title">Words from Those<br>Who've <em>Made the Journey</em></h2>
+<div class="testi-grid">
+<div class="testi-card"><div class="stars">★★★★★</div><div class="testi-quote">"</div><div class="testi-text">Ramu genuinely understood what I was looking for — not just my technical skills but my personal goals. The process was fast, transparent, and I never felt like just another resume in a pile.</div><div class="testi-author"><div class="author-avatar">TH</div><div><div class="author-name">T. Hoang</div><div class="author-role">AI Engineer · Tokyo</div></div></div></div>
+<div class="testi-card"><div class="stars">★★★★★</div><div class="testi-quote">"</div><div class="testi-text">The advice I received was honest and realistic — no sugar-coating, just clear information about what to expect in Japan's IT market. That kind of respect is rare in recruiting.</div><div class="testi-author"><div class="author-avatar">MT</div><div><div class="author-name">M. Tran</div><div class="author-role">BrSE · Osaka</div></div></div></div>
+<div class="testi-card"><div class="stars">★★★★★</div><div class="testi-quote">"</div><div class="testi-text">From first contact to offer letter, everything moved quickly without feeling rushed. Ramu kept me updated at every step — friendly but always professional.</div><div class="testi-author"><div class="author-avatar">NP</div><div><div class="author-name">N. Pham</div><div class="author-role">SAP Consultant · Tokyo</div></div></div></div>
+<div class="testi-card"><div class="stars">★★★★★</div><div class="testi-quote">"</div><div class="testi-text">What sets Ramu apart is the long-term support. Even after I started my job, there was follow-up to make sure I was settling in well. That kind of care is something I truly appreciated.</div><div class="testi-author"><div class="author-avatar">DL</div><div><div class="author-name">D. Le</div><div class="author-role">Salesforce Dev · Kobe</div></div></div></div>
+</div>
+</div>
 </section>
 
 <section id="contact">
-  <div class="contact-inner">
-    <p class="section-label reveal" style="text-align:center">Let's Connect</p>
-    <h2 class="contact-title reveal reveal-delay-1">Let's Build Your<br><em>Career in Japan</em></h2>
-    <p class="contact-desc reveal reveal-delay-2">Whether you're exploring opportunities or ready to make your move, I'm here to guide you — honestly, personally, and professionally.</p>
-    <div class="contact-links reveal reveal-delay-3">
-      <a href="mailto:nguyenlt@rikkeisoft.com" class="contact-link"><span class="contact-link-icon">✉</span>nguyenlt@rikkeisoft.com</a>
-      <a href="https://linkedin.com" target="_blank" class="contact-link"><span class="contact-link-icon">in</span>Connect on LinkedIn</a>
-    </div>
-    <a href="mailto:nguyenlt@rikkeisoft.com" class="btn-cta reveal reveal-delay-4">Let's Build Your Career in Japan →</a>
-  </div>
+<div class="contact-inner">
+<p class="section-label" style="text-align:center">Let's Connect</p>
+<h2 class="contact-title">Let's Build Your<br><em>Career in Japan</em></h2>
+<p class="contact-desc">Whether you're exploring opportunities or ready to make your move, I'm here to guide you — honestly, personally, and professionally.</p>
+<div class="contact-links">
+<a href="mailto:nguyenlt@rikkeisoft.com" class="contact-link"><span class="contact-link-icon">✉</span>nguyenlt@rikkeisoft.com</a>
+<a href="https://linkedin.com" target="_blank" class="contact-link"><span class="contact-link-icon">in</span>Connect on LinkedIn</a>
+</div>
+<a href="mailto:nguyenlt@rikkeisoft.com" class="btn-cta">Let's Build Your Career in Japan →</a>
+</div>
 </section>
 
 <footer>
-  <div class="footer-brand">HR Style Life<span>.</span></div>
-  <div class="footer-copy">HR Style Life © 2026 — Nguyên Lâm (Ramu) · IT Talent Partner · Japan</div>
+<div class="footer-brand">HR Style Life<span>.</span></div>
+<div class="footer-copy">HR Style Life © 2026 — Nguyên Lâm (Ramu) · IT Talent Partner · Japan</div>
 </footer>
 
 <script>
-const cursor = document.getElementById('cursor');
-const cursorRing = document.getElementById('cursorRing');
-const mouseGlow = document.getElementById('mouseGlow');
-let mx=-200,my=-200,rx=-200,ry=-200;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cursor.style.left=mx-3.5+'px';cursor.style.top=my-3.5+'px';
-  mouseGlow.style.left=mx+'px';mouseGlow.style.top=my+'px';
-});
-(function ring(){rx+=(mx-rx)*0.13;ry+=(my-ry)*0.13;cursorRing.style.left=rx-17+'px';cursorRing.style.top=ry-17+'px';requestAnimationFrame(ring);})();
-document.querySelectorAll('a,button,.job-card,.testi-card,.why-item,.tag,.counter-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cursorRing.classList.add('expand'));
-  el.addEventListener('mouseleave',()=>cursorRing.classList.remove('expand'));
-});
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
-
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-const tlObs=new IntersectionObserver(e=>e.forEach((x,i)=>{if(x.isIntersecting)setTimeout(()=>x.target.classList.add('visible'),i*140);}),{threshold:0.2});
-document.querySelectorAll('.timeline-item').forEach(el=>tlObs.observe(el));
-
-function animCount(el,target){let s,d=2000;requestAnimationFrame(function t(ts){if(!s)s=ts;const p=Math.min((ts-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*target);if(p<1)requestAnimationFrame(t);else el.textContent=target;});}
-const cObs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){const w=x.target.querySelector('[data-target]');if(w&&!w.dataset.done){w.dataset.done='1';animCount(w.querySelector('.count-num'),parseInt(w.dataset.target));}}}),{threshold:0.5});
-document.querySelectorAll('.counter-card').forEach(el=>cObs.observe(el));
-
 document.querySelectorAll('.filter-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-    const f=btn.dataset.filter;
-    document.querySelectorAll('.job-card').forEach(c=>{const s=f==='all'||c.dataset.tags.includes(f);c.classList.toggle('hidden',!s);});
-  });
+btn.addEventListener('click',()=>{
+document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+const f=btn.dataset.filter;
+document.querySelectorAll('.job-card').forEach(c=>{
+const s=f==='all'||c.dataset.tags.includes(f);
+c.classList.toggle('hidden',!s);
 });
-
-// Hero canvas — soft glowing orbs + fine particles
-const canvas=document.getElementById('hero-canvas');
-const ctx=canvas.getContext('2d');
-let W,H;
-function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
-resize();window.addEventListener('resize',resize);
-const palette=[[201,113,122],[160,120,152],[196,149,106],[220,160,175],[175,135,195]];
-class Orb{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*110+40;this.vx=(Math.random()-.5)*.15;this.vy=(Math.random()-.5)*.15;this.c=palette[Math.floor(Math.random()*palette.length)];this.a=Math.random()*.06+.02;this.l=Math.random();this.s=.002+Math.random()*.003;}update(){this.x+=this.vx;this.y+=this.vy;this.l+=this.s;if(this.l>1)this.l=0;if(this.x<-this.r||this.x>W+this.r||this.y<-this.r||this.y>H+this.r)this.reset();}draw(){const a=Math.sin(this.l*Math.PI)*this.a;const g=ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r);g.addColorStop(0,`rgba(${this.c},${a})`);g.addColorStop(1,`rgba(${this.c},0)`);ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();}}
-class Pt{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.4+.3;this.vx=(Math.random()-.5)*.22;this.vy=(Math.random()-.5)*.22;this.a=Math.random()*.35+.08;this.l=Math.random();this.s=.003+Math.random()*.004;this.c=palette[Math.floor(Math.random()*palette.length)];}update(){this.x+=this.vx;this.y+=this.vy;this.l+=this.s;if(this.l>1)this.l=0;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}draw(){const a=Math.sin(this.l*Math.PI)*this.a;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.c},${a})`;ctx.fill();}}
-const orbs=Array.from({length:16},()=>new Orb());
-const pts=Array.from({length:70},()=>new Pt());
-(function animate(){
-  ctx.clearRect(0,0,W,H);
-  orbs.forEach(o=>{o.update();o.draw();});
-  for(let i=0;i<pts.length;i++){for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<85){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(201,113,122,${.035*(1-d/85)})`;ctx.lineWidth=.5;ctx.stroke();}}}
-  pts.forEach(p=>{p.update();p.draw();});
-  requestAnimationFrame(animate);
-})();
-
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}}));
+});
+});
 </script>
 </body>
 </html>
