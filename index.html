@@ -449,9 +449,76 @@ c.classList.toggle('hidden',!s);
 });
 </script>
   <script>
-    const translations = { ... }
-    function setLang() { ... }
-    function toggleLangMenu() { ... }
-  </script>
+const translations = {
+  vi: {
+    hero_title:    'Chia sẻ cùng <em>Nguyên Lâm</em>',
+    hero_sub:      'Hôm nay bạn thế nào? Hãy trò chuyện cùng mình.',
+    hero_btn1:     'Các vị trí Open →',
+    hero_btn2:     'Liên hệ mình',
+    jobs_title:    'Các vị trí đang Open tại <em>Rikkei Japan</em>',
+    hobbies_title: 'Những sở thích nhỏ của <em>Ramu</em>',
+    contact_title: 'Một câu <em>"Hello"</em> Cũng đủ vui rồi',
+    contact_sub:   'Mình tin một career match tốt không chỉ là kỹ năng...',
+    contact_btn:   'Nhắn "Hi Ramu" →',
+  },
+  ja: {
+    hero_title:    '<em>ラム</em>と話しましょう',
+    hero_sub:      '今日はいかがですか？気軽に話しかけてね。',
+    hero_btn1:     '求人一覧を見る →',
+    hero_btn2:     'お問い合わせ',
+    jobs_title:    '<em>Rikkei Japan</em> の求人情報',
+    hobbies_title: '<em>ラム</em>の趣味',
+    contact_title: '<em>「こんにちは」</em>の一言で十分です',
+    contact_sub:   '良いマッチングはスキルだけでなく、方向性と価値観の一致だと思っています。',
+    contact_btn:   '「Hi ラム」と送る →',
+  },
+  en: {
+    hero_title:    'Connect with <em>Nguyen Lam</em>',
+    hero_sub:      'How are you today? Feel free to chat with me.',
+    hero_btn1:     'Open Positions →',
+    hero_btn2:     'Get In Touch',
+    jobs_title:    'Open Positions at <em>Rikkei Japan</em>',
+    hobbies_title: '<em>Ramu\'s</em> Hobbies',
+    contact_title: 'A simple <em>"Hello"</em> is enough',
+    contact_sub:   'I believe a great career match is not just about skills — it\'s about shared direction and values.',
+    contact_btn:   'Say "Hi Ramu" →',
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang]?.[key]) el.innerHTML = translations[lang][key];
+  });
+
+  const labels = { vi: '🇻🇳 VI', ja: '🇯🇵 JP', en: '🇬🇧 EN' };
+  document.querySelector('.lang-btn').innerHTML =
+    `${labels[lang]} <span class="lang-arrow">▾</span>`;
+
+  document.querySelectorAll('.lang-menu li').forEach((li, i) => {
+    li.classList.toggle('active', ['vi','ja','en'][i] === lang);
+  });
+
+  document.getElementById('langMenu').classList.remove('open');
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+}
+
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  document.getElementById('langMenu').classList.toggle('open');
+  document.querySelector('.lang-arrow').style.transform =
+    document.getElementById('langMenu').classList.contains('open')
+      ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+
+document.addEventListener('click', () => {
+  document.getElementById('langMenu').classList.remove('open');
+  document.querySelector('.lang-arrow').style.transform = 'rotate(0deg)';
+});
+
+const savedLang = localStorage.getItem('lang') || 'vi';
+setLang(savedLang);
+</script>
 </body>
 </html>
