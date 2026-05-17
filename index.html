@@ -146,6 +146,72 @@ footer{background:var(--bg-warm);border-top:1px solid var(--glass-border);paddin
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:2.5rem}.about-visual{max-height:220px;aspect-ratio:16/9}.My-grid{grid-template-columns:repeat(2,1fr)}.exp-layout{grid-template-columns:1fr;gap:2.5rem}.section-inner{padding:4.5rem 2rem}}
 @media(max-width:640px){.My-grid{grid-template-columns:1fr}.jobs-grid{grid-template-columns:1fr}.nav-links{display:none}.section-inner{padding:3.5rem 1.5rem}footer{flex-direction:column;gap:1rem;text-align:center}}
+.lang-switcher {
+  position: relative;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+
+.lang-btn:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+.lang-arrow {
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+
+.lang-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  min-width: 150px;
+  box-shadow: var(--shadow-md);
+  z-index: 999;
+}
+
+.lang-menu.open {
+  display: block;
+}
+
+.lang-menu li {
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  transition: background 0.15s;
+}
+
+.lang-menu li:hover {
+  background: var(--rose-lt);
+  color: var(--rose);
+}
+
+.lang-menu li.active {
+  font-weight: 600;
+  color: var(--rose);
+}
 </style>
 </head>
 <body>
@@ -159,9 +225,14 @@ footer{background:var(--bg-warm);border-top:1px solid var(--glass-border);paddin
 <li><a href="#contact">Connect</a></li>
 </ul>
 <div class="lang-switcher">
-  <button onclick="setLang('vi')" data-lang="vi">🇻🇳 VI</button>
-  <button onclick="setLang('ja')" data-lang="ja">🇯🇵 JP</button>
-  <button onclick="setLang('en')" data-lang="en">🇬🇧 EN</button>
+  <button class="lang-btn" onclick="toggleLangMenu(event)">
+    🇻🇳 VI <span class="lang-arrow">▾</span>
+  </button>
+  <ul class="lang-menu" id="langMenu">
+    <li onclick="setLang('vi')">🇻🇳 Tiếng Việt</li>
+    <li onclick="setLang('ja')">🇯🇵 日本語</li>
+    <li onclick="setLang('en')">🇬🇧 English</li>
+  </ul>
 </div>
 </nav>
 
@@ -377,5 +448,10 @@ c.classList.toggle('hidden',!s);
 });
 });
 </script>
+  <script>
+    const translations = { ... }
+    function setLang() { ... }
+    function toggleLangMenu() { ... }
+  </script>
 </body>
 </html>
